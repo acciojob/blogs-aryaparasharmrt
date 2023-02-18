@@ -9,8 +9,8 @@ public class Image{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    private String discription;
-    private String dimension;
+    private String description;
+    private String dimensions;
 
     @ManyToOne
     @JoinColumn
@@ -18,10 +18,11 @@ public class Image{
     public Image() {
     }
 
-    public Image(int id, String discription, String dimension, Blog blog) {
-        Id = id;
-        this.discription = discription;
-        this.dimension = dimension;
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
         this.blog = blog;
     }
 
@@ -33,19 +34,19 @@ public class Image{
         Id = id;
     }
 
-    public String getDiscription() {
-        return discription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getDimension() {
-        return dimension;
+    public String getDimensions() {
+        return dimensions;
     }
 
-    public void setDimension(String dimension) {
-        this.dimension = dimension;
+    public void setDimensions(String dimensions) {
+        this.dimensions = dimensions;
     }
 }
