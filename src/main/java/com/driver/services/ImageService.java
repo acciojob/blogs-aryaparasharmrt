@@ -26,6 +26,7 @@ public class ImageService {
         Blog blog = blogRepository2.findById(blogId).get();
         List<Image> blogImages = blog.getImageList();
         blogImages.add(image);
+        image.setBlog(blog);
 
         blogRepository2.save(blog); //here we are saving in blog repo and due to cascading effect
                                     // it automatically save the image(child)

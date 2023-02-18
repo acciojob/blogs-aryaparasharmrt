@@ -29,6 +29,7 @@ public class BlogService {
         User user = userRepository1.findById(userId).get();
         List<Blog> userBlogs = user.getBlogList();
         userBlogs.add(blog);
+        blog.setUser(user);
 
         userRepository1.save(user); //here we are saving in user repo and due to cascading effect
                                     // it automatically save the blog(child)
