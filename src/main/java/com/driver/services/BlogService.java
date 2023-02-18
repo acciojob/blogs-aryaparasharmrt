@@ -30,8 +30,8 @@ public class BlogService {
         List<Blog> userBlogs = user.getBlogList();
         userBlogs.add(blog);
 
-        userRepository1.save(user);
-        blogRepository1.save(blog);
+        userRepository1.save(user); //here we are saving in user repo and due to cascading effect
+                                    // it automatically save the blog(child)
         return blog;
     }
 

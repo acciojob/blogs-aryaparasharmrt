@@ -27,8 +27,8 @@ public class ImageService {
         List<Image> blogImages = blog.getImageList();
         blogImages.add(image);
 
-        blogRepository2.save(blog);
-        imageRepository2.save(image);
+        blogRepository2.save(blog); //here we are saving in blog repo and due to cascading effect
+                                    // it automatically save the image(child)
         return image;
 
     }
@@ -40,8 +40,17 @@ public class ImageService {
 
     public int countImagesInScreen(Integer id, String screenDimensions) {
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
-        String[] a = screenDimensions.split("X");
-        int pixels = Integer.parseInt(a[0]) * Integer.parseInt(a[1]);
-        return pixels/4;
+        Image image = imageRepository2.findById(id).get();
+        String imageDimensions = image.getDimensions();
+
+        String[] screen_Dim = screenDimensions.split("X");
+        String[] image_Dim = imageDimensions.split("X");
+
+        int screen_d1 = Integer.parseInt(screen_Dim[0]);
+        int screen_d2 = Integer.parseInt(screen_Dim[1]);
+        int image_d1 = Integer.parseInt(image_Dim[0]);
+        int image_d2 = Integer.parseInt(image_Dim[1]);
+
+        return (screen_d1 * screen_d2)/(image_d1 * image_d2);
     }
 }

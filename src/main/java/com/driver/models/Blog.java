@@ -32,14 +32,7 @@ public class Blog{
 
     }
 
-    public Blog(int id, String title, String content, Date pubDate, User user, List<Image> imageList) {
-        Id = id;
-        this.title = title;
-        this.content = content;
-        PubDate = pubDate;
-        this.user = user;
-        this.imageList = imageList;
-    }
+
 
     public User getUser() {
         return user;
